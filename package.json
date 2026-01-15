@@ -1,0 +1,16 @@
+{
+  "name": "civic-ai-hackathon",
+  "version": "1.0.0",
+  "description": "AI-Powered Citizen Grievance System with Email",
+  "main": "backend.js",
+  "scripts": {
+    "start": "node backend.js",
+    "dev": "nodemon backend.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

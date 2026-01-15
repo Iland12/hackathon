@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - CivicSense AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-brain"></i>
+          <h1>CivicSense AI Dashboard</h1>
+        </div>
+        <div class="nav-links">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="submit.html"><i class="fas fa-plus-circle"></i> Submit</a>
+          <a href="track.html"><i class="fas fa-search"></i> Track</a>
+          <a href="dashboard.html" class="active"
+            ><i class="fas fa-chart-bar"></i> Dashboard</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <h1><i class="fas fa-tachometer-alt"></i> Government Dashboard</h1>
+        <p>
+          Real-time analytics of citizen grievances with email notifications
+        </p>
+        <button class="btn-email-test" onclick="testEmailSystem()">
+          <i class="fas fa-envelope"></i> Test Email System
+        </button>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card total">
+          <i class="fas fa-inbox"></i>
+          <div>
+            <h3 id="totalComplaints">0</h3>
+            <p>Total Complaints</p>
+          </div>
+        </div>
+        <div class="stat-card resolved">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <h3 id="resolvedCount">0</h3>
+            <p>Resolved</p>
+          </div>
+        </div>
+        <div class="stat-card pending">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h3 id="pendingCount">0</h3>
+            <p>Pending</p>
+          </div>
+        </div>
+        <div class="stat-card email">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h3 id="emailCount">0</h3>
+            <p>Emails Sent</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Complaints -->
+      <div class="dashboard-section">
+        <div class="section-header">
+          <h2><i class="fas fa-list"></i> Recent Complaints</h2>
+          <button class="btn-refresh" onclick="loadDashboard()">
+            <i class="fas fa-sync-alt"></i> Refresh
+          </button>
+        </div>
+
+        <div class="complaints-table">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Email Sent</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="complaintsTable">
+              <!-- Will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Analytics Charts -->
+      <div class="dashboard-section">
+        <h2><i class="fas fa-chart-pie"></i> Analytics</h2>
+        <div class="charts-grid">
+          <div class="chart-container">
+            <h3>Complaints by Category</h3>
+            <div class="chart" id="categoryChart">
+              <!-- Will be populated -->
+            </div>
+          </div>
+          <div class="chart-container">
+            <h3>Priority Distribution</h3>
+            <div class="chart" id="priorityChart">
+              <!-- Will be populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Log -->
+      <div class="dashboard-section">
+        <h2><i class="fas fa-envelope-open-text"></i> Email History</h2>
+        <div class="email-log" id="emailLog">
+          <div class="email-item">
+            <i class="fas fa-paper-plane"></i>
+            <div>
+              <strong>Test Email Sent</strong>
+              <p>To: admin@civicsense.ai • Just now</p>
+            </div>
+            <span class="email-status sent">Sent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Test Email Modal -->
+    <div class="modal" id="emailModal" style="display: none">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2><i class="fas fa-envelope"></i> Test Email System</h2>
+        <p>This will send a test email to verify the system is working.</p>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+          <button class="btn-primary" onclick="sendTestEmail()">
+            Send Test Email
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
