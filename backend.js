@@ -2,6 +2,8 @@
 // ULTRA SIMPLE BACKEND WITH EMAIL - Just run!
 // ============================================
 
+require("dotenv").config();
+
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
@@ -12,8 +14,8 @@ const nodemailer = require("nodemailer");
 const emailConfig = {
   service: "gmail",
   auth: {
-    user: "iland12maimom@gmail.com", // ← CHANGE THIS
-    pass: "lrrv plir bbhs nzdv", // ← CHANGE THIS (App Password)
+    user: process.env.EMAIL_USER, // ← CHANGE THIS
+    pass: process.env.EMAIL_PASS, // ← CHANGE THIS (App Password)
   },
 };
 
@@ -90,7 +92,7 @@ async function sendEmail(complaintData, recipientEmail = null) {
     // Email to Admin (YOU)
     const adminMail = {
       from: '"CivicSense AI" <noreply@civicsense.ai>',
-      to: "your-email@gmail.com", // ← Your email
+      to: process.env.EMAIL_USER, // ← Your email
       subject: `🚨 NEW: ${complaintData.category} Complaint - Priority ${complaintData.priority}/5`,
       html: createAdminEmailHTML(complaintData),
     };
